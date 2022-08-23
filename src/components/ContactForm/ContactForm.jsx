@@ -3,6 +3,11 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';
 
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 import {useGetContactsQuery, useAddContactMutation} from '../../redux/contactsSlice';
 
 
@@ -54,36 +59,32 @@ setNumber('');
     <>
     <form className={s.form}      
     onSubmit={handleSubmit}>
-    <label 
-      className={s.lable}>Name
-      <input
-        className={s.input}
+
+<TextField fullWidth 
         type="text"
-        name="name"
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?        [a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and         spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        required
+        name="name" 
+        label="Name" 
         onChange={handleChange}
         value={name}
+        sx={{
+         marginTop: 3,
+       }}
         />
-      </label> 
-      <label
-         className={s.lable}>Number 
-         <input
-         className={s.input}
-         type="tel"
-         name="number"
-         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-         title="Phone number must be digits and can contain spaces,        dashes, parentheses and can start with +"
-         required 
-         onChange={handleChange}
-         value={number}/>
-      </label>
-          <button
-          className={s.button}
-          type="submit">
-          Add contact
-          </button>
+<TextField fullWidth 
+        type="tel"
+        name="number" 
+        label="Number" 
+        onChange={handleChange}
+        value={number}
+        sx={{
+         marginTop: 3,
+       }}
+        />
+      <Button variant="contained" type="submit"
+      sx={{
+         marginTop: 3,
+       }}
+     >Add contact</Button>
       </form>
       </>
      )

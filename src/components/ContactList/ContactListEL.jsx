@@ -1,3 +1,6 @@
+import * as React from 'react';
+import Button from '@mui/material/Button';
+
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 
@@ -7,10 +10,13 @@ return (
 <li className={s.list}>
 <span className={s.text}>{name}: </span>
 <span>{number}</span>
-<button className={s.button} 
-type="button"
-onClick={() => onDeleteContact(id)}>
-Delete</button>
+<Button variant="contained"
+     type="button"
+     onClick={() => onDeleteContact(id)}
+     sx={{
+      marginLeft: 3,
+    }}
+    >Delete</Button>
       </li>
 )
 }

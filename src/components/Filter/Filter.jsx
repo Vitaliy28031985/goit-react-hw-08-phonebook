@@ -1,5 +1,9 @@
 import PropTypes from 'prop-types';
 
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+
 import s from './Filter.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import {filterContact} from '../../redux/actions';
@@ -14,9 +18,12 @@ const filterChange = e => dispatch(filterContact(e.target.value));
 
   
 return (
-<label className={s.lable}>Find contacts by name
-   <input className={s.input} type='text' value={filterValue} onChange={filterChange}></input>
-</label>
+   <>
+   <TextField fullWidth 
+   type='text' value={filterValue} 
+   onChange={filterChange}
+   id="filter" /></>
+
    );
 };
 
