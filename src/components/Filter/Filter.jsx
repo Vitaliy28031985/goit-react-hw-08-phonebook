@@ -1,10 +1,7 @@
 import PropTypes from 'prop-types';
 
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-
-import s from './Filter.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import {filterContact} from '../../redux/actions';
 import {getFilter} from '../../redux/selectors'

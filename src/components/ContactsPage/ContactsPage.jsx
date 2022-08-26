@@ -12,7 +12,7 @@ const ContactsPage = () => {
    return (
 <div style={{
    marginTop: 100,
-   marginLeft: 400,
+   marginLeft: 300,
    width: 900,
   }}>
   <p style={{
