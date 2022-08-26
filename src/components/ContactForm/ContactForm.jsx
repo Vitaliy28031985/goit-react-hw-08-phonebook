@@ -15,8 +15,8 @@ export const ContactForm = () => {
 const [name, setName] = useState('');
 const [number, setNumber] = useState('');
 
-const [addContact] = useAddContactMutation();
 const { data: contacts } = useGetContactsQuery();
+const [addContact, { isLoading }] = useAddContactMutation();
 
    const handleChange = e => {
    const {name, value,} = e.currentTarget;
@@ -79,7 +79,10 @@ setNumber('');
          marginTop: 3,
        }}
         />
-      <Button variant="contained" type="submit"
+      <Button 
+      variant="contained" 
+      type="submit"
+      disabled={isLoading}
       sx={{
          marginTop: 3,
        }}

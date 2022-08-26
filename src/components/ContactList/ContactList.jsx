@@ -6,19 +6,19 @@ import {getFilterList} from '../../redux/selectors';
 
 export const ContactList = () => {
 const filter = useSelector(getFilterList);
-const {data: contacts} = useGetContactsQuery();
+const {data} = useGetContactsQuery();
 const [deleteContactc] = useDeleteContatcMutation();
 
 const normalizeFilter = filter.toLowerCase();
-const filteredContacts =  contacts.filter(contact =>
-contact.name.toLowerCase().includes(normalizeFilter));
+const filteredContacts =  data?.filter(contact =>
+contact.name.toLowerCase().includes(normalizeFilter)) ?? [];
 
 
    const onDeleteContact = id => deleteContactc(id);
 
 return (
     <ul>
-   {contacts && filteredContacts.map(({id, name, number}) => 
+   {data && filteredContacts.map(({id, name, number}) => 
    <ContactListEL 
    key={id} 
    id={id}

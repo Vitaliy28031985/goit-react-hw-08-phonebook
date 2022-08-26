@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import {useLoginMutation} from '../../redux/authApi';
 import {setCredentials} from '../../redux/authSlice';
 
+
 export default function Login() {
   const [loginEl, setLoginEl] = useState({
   email: '',
@@ -24,10 +25,10 @@ export default function Login() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const dataRespons = await login(setLoginEl).unwrap();
+      const dataRespons = await login(loginEl).unwrap();
       dispatch(setCredentials(dataRespons));
     } catch (error) {
-      console.log('Oh no, there was an login error!', error);
+      alert(`User with the email: ${loginEl.email} does not exist!`, error);
     }
     setLoginEl({
       email: '',

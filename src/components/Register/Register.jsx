@@ -27,13 +27,15 @@ const handleChange = ({ target: { name, value } }) => {
 const hendleSubmit = async e => {
   e.preventDefault();
   try {
-    const user = await singup(setRegisterEl).unwrap();
+    const user = await singup(registerEl).unwrap();
 
     dispatch(setCredentials(user));
   } catch (error) {
-    console.log('Oh no, there was an register error!', error);
+   alert('Sorry, something went wrong', error);
   }
-
+console.log(
+  registerEl
+);
   setRegisterEl({
     name: '',
     email: '',
