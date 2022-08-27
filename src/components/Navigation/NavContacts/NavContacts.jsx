@@ -13,7 +13,7 @@ export const NavContacts = () => {
 
    return (
 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-<NavLink to='/'
+<NavLink to='/goit-react-hw-08-phonebook'
 style={{
   textDecoration: 'none',
 }}
