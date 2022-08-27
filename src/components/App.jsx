@@ -35,7 +35,7 @@ export const App = () => {
     
     <Route  path="/contacts" element={<PrivateRoute><ContactsPage/></PrivateRoute>}/>
     
-    <Route  path="//login" element={<PublicRouter restricted><Login/></PublicRouter>}/>
+    <Route  path="/login" element={<PublicRouter restricted><Login/></PublicRouter>}/>
     <Route  path="/register" element={<PublicRouter restricted><Register/></PublicRouter>}/>
     <Route path="*" element={<NoPage />} />
     </Routes>
