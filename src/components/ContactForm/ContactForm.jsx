@@ -9,7 +9,6 @@ import Button from '@mui/material/Button';
 
 import {useGetContactsQuery, useAddContactMutation} from '../../redux/contactsSlice';
 
-
 export const ContactForm = () => { 
 const [name, setName] = useState('');
 const [number, setNumber] = useState('');

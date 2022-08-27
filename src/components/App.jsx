@@ -14,19 +14,19 @@ const Home = lazy(() => import('components/Home/Home' /* webpackChunkName: "Home
 const Register = lazy(() => import('components/Register/Register' /* webpackChunkName: "Register" */));
 const Login = lazy(() => import('components/Login/Login' /* webpackChunkName: "Login" */));
 const NoPage = lazy(() => import('components/NoPage/NoPage' /* webpackChunkName: "NoPage" */));
+// const LoaderComponent = lazy(() => import('components/Loader/Loader' /* webpackChunkName: "LoaderComponent" */));
 
  
 
 
 
 export const App = () => {
-
-
+//<LoaderComponent/>
   return (
     
     <Container>
     <ContactsAppBar/>
-    <Suspense fallback={<p>Loding...</p>}>
+    <Suspense fallback={<p>Loader...</p>}>
     <Routes>
     <Route  path="/" element={
     <PublicRouter>
