@@ -10,16 +10,16 @@ const ContactsPage = () => {
    const {isLoading} = useGetContactsQuery();
 
    return (
-<div style={{
+   <div style={{
    marginTop: 100,
    marginLeft: 300,
    width: 900,
-  }}>
-  <p style={{
-  fontSize: 30,
-  color: '#010101'
-  }}
-  >Phonebook</p>
+   }}>
+   <p style={{
+   fontSize: 30,
+   color: '#010101'
+   }}
+   >Phonebook</p>
 <ContactForm />
   <p
   style={{
