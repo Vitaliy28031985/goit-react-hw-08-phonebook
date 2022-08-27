@@ -4,11 +4,11 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import { useSelector, useDispatch } from 'react-redux';
 import {filterContact} from '../../redux/actions';
-import {getFilter} from '../../redux/selectors'
+import {getFilterList} from '../../redux/selectors'
 
 export const Filter = () => {
 
-const filterValue = useSelector(getFilter);
+const filterValue = useSelector(getFilterList);
 const dispatch = useDispatch();
 
 const filterChange = e => dispatch(filterContact(e.target.value));
@@ -19,7 +19,8 @@ return (
    <TextField fullWidth 
    type='text' value={filterValue} 
    onChange={filterChange}
-   id="filter" /></>
+   id="filter" 
+   /></>
 
    );
 };

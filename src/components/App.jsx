@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import {Container} from 'components/Container/Container';
 import ContactsAppBar from 'components/Navigation/Navigation';
+import {PrivateRoute} from 'routers/PrivateRoute';
+import {PublicRouter} from 'routers/PublicRoute';
 
 
 
@@ -26,10 +28,15 @@ export const App = () => {
     <ContactsAppBar/>
     <Suspense fallback={<p>Loding...</p>}>
     <Routes>
-    <Route  path="/" element={<Home/>}/>
-    <Route  path="/contacts" element={<ContactsPage/>}/>
-    <Route  path="//login" element={<Login/>}/>
-    <Route  path="/register" element={<Register/>}/>
+    <Route  path="/" element={
+    <PublicRouter>
+    <Home/>
+    </PublicRouter>}/>
+    
+    <Route  path="/contacts" element={<PrivateRoute><ContactsPage/></PrivateRoute>}/>
+    
+    <Route  path="//login" element={<PublicRouter restricted><Login/></PublicRouter>}/>
+    <Route  path="/register" element={<PublicRouter restricted><Register/></PublicRouter>}/>
     <Route path="*" element={<NoPage />} />
     </Routes>
     </Suspense>

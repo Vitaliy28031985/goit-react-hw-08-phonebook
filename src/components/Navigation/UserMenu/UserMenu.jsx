@@ -1,19 +1,27 @@
 import * as React from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-// import { useLogoutMutation } from '../../../redux/authApi';
-// import { unsetCredentials } from '../../../redux/authSlice';
+import { useLogoutMutation } from '../../../redux/authApi';
+import { selectUser, unsetCredentials } from '../../../redux/authSlice';
+import { contactsApi } from '../../../redux/contactsSlice';
 
 
 
 export const UserMenu = () => {
-   const [setAnchorElNav] = React.useState(null);
+   const dispatch = useDispatch();
+  const [logout, { isLoading }] = useLogoutMutation();
+  const user = useSelector(selectUser);
 
-     const handleCloseNavMenu = () => {
-       setAnchorElNav(null);
+
+
+     const handleCloseNavMenu = async () => {
+     await logout();
+    dispatch(unsetCredentials());
+    dispatch(contactsApi.util.resetApiState());
+
      };
 
    return (
@@ -30,7 +38,7 @@ marginTop: 2.1,
 fontWeight: 400,
 color: 'white',
 textDecoration: 'none',
-}}>Vitaliy@i.ua</Typography>
+}}>{user.email}</Typography>
 
 <NavLink to='/login'
   style={{
@@ -39,6 +47,7 @@ textDecoration: 'none',
   >         
   <Button
   onClick={handleCloseNavMenu}
+  disabled={isLoading}
   sx={{ my: 2, color: 'white', display: 'block' }}>
   Logout
   </Button>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,7 +10,13 @@ import {NavContacts} from './NavContacts/NavContacts';
 import {AuthNav} from './AuthNav/AuthNav';
 import {UserMenu} from './UserMenu/UserMenu';
 
+import { selectIsLoggedIn } from '../../redux/authSlice';
+
+
 const ContactsAppBar = () => {
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   return (
 <AppBar position="relative"
 sx={{
@@ -26,6 +33,9 @@ noWrap
 component="a"
 href="/"
 sx={{
+position: 'fixed',
+top: 16,
+right:1000,
 mr: 2,
 display: { xs: 'none', md: 'flex' },
 fontFamily: 'monospace',
@@ -36,10 +46,13 @@ textDecoration: 'none',
 }}>Phonebook</Typography>
               
 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-<NavContacts/>
-<AuthNav/>
-<UserMenu/>
- </Box>          
+{isLoggedIn && (<NavContacts/>)}
+ {!isLoggedIn && (<AuthNav/>)} 
+
+{isLoggedIn && (<UserMenu/>)}
+
+ </Box> 
+        
 </Toolbar>
 </Container>
 </AppBar>
