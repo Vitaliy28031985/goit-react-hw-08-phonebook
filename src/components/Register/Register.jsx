@@ -10,19 +10,36 @@ import { setCredentials } from 'redux/authSlice';
 
 export default function Register() {
 
-const [registerEl, setRegisterEl] = useState({
-  name: '',
-  email: '',
-  password: ''
-});
-
+const [name, setName] = useState('');
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+const registerEl = {
+  name,
+  email,
+  password, 
+}
 const dispatch = useDispatch();
 const [singup, { isLoading }] = useSignupMutation();
 
-const handleChange = ({ target: { name, value } }) => {
-  setRegisterEl(prev => ({ ...prev, [name]: value }));
-  };
 
+
+const handleChange = e => {
+  const {name, value,} = e.currentTarget;
+  switch (name) {
+
+    case 'name':
+      setName(value);
+       break;
+     case 'email':
+    setEmail(value);
+     break;
+     case 'password':
+      setPassword(value);
+     break;
+     default:
+     return;  
+  }
+};
 
 const hendleSubmit = async e => {
   e.preventDefault();
@@ -36,11 +53,9 @@ const hendleSubmit = async e => {
 console.log(
   registerEl
 );
-  setRegisterEl({
-    name: '',
-    email: '',
-    password: '',
-  });
+setName('');
+setEmail('');
+setPassword('');
 };
 
   return (
@@ -59,7 +74,7 @@ style={{
       }}
     >
       <TextField fullWidth
-       value={registerEl.name}  
+       value={name}  
        label="Name"
         id="name" 
         type="text"
@@ -74,7 +89,7 @@ style={{
       type="email"
       name="email"
       onChange={handleChange}
-      value={registerEl.email}
+      value={email}
       />
       <TextField 
       sx={{
@@ -86,7 +101,7 @@ style={{
       type="password"
       name="password" 
       onChange={handleChange}
-      value={registerEl.password}
+      value={password}
       />
     </Box>
 

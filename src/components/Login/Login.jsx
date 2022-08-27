@@ -9,18 +9,31 @@ import {setCredentials} from '../../redux/authSlice';
 
 
 export default function Login() {
-  const [loginEl, setLoginEl] = useState({
-  email: '',
-  password: ''
-  });
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
   const [login, { isLoading }] = useLoginMutation();
-
-
-  const handleChange = ({ target: { name, value } }) => {
-    setLoginEl(prev => ({ ...prev, [name]: value }));
+  
+  const loginEl = {
+    password,
+    email
   };
+
+  const handleChange = e => {
+    const {name, value,} = e.currentTarget;
+    switch (name) {
+       case 'email':
+      setEmail(value);
+       break;
+       case 'password':
+        setPassword(value);
+       break;
+       default:
+       return;  
+    }
+ };
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -28,12 +41,11 @@ export default function Login() {
       const dataRespons = await login(loginEl).unwrap();
       dispatch(setCredentials(dataRespons));
     } catch (error) {
-      alert(`User with the email: ${loginEl.email} does not exist!`, error);
+      alert(`User with the email: ${email} does not exist!`, error);
     }
-    setLoginEl({
-      email: '',
-      password: '',
-    });
+    setEmail('');
+    setPassword('');
+   
   };
 
   return (
@@ -48,16 +60,14 @@ style={{
       sx={{
         width: 500,
         maxWidth: '100%',
-      }}
-    >
-
+      }}>
       <TextField fullWidth 
       label="Email" 
       id="email" 
       type="email"
       name="email"
       onChange={handleChange}
-      value={loginEl.email}
+      value={email}
       />
       <TextField 
       sx={{
@@ -69,7 +79,7 @@ style={{
       type="password"
       name="password"
       onChange={handleChange}
-      value={loginEl.password}
+      value={password}
       />
     </Box>
 

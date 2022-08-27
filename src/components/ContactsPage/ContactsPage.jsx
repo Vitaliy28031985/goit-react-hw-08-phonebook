@@ -28,9 +28,7 @@ const ContactsPage = () => {
   }}
   >Contacts</p>
   <Filter/>
-  {isLoading ? (<LoaderComponent/>) : (<ContactList />)}
-
-
+  {isLoading ? (<LoaderComponent/>) : (<ContactList/>)}
   </div>
    );
 
