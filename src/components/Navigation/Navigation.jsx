@@ -1,19 +1,27 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
 
 import {NavContacts} from './NavContacts/NavContacts';
 import {AuthNav} from './AuthNav/AuthNav';
 import {UserMenu} from './UserMenu/UserMenu';
 
+
 import { selectIsLoggedIn } from '../../redux/authSlice';
 
 
 const ContactsAppBar = () => {
+  const [setAnchorElNav] = React.useState(null);
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
 const isLoggedIn = useSelector(selectIsLoggedIn);
 
@@ -35,6 +43,19 @@ marginTop: 20,
 }}
 >Phonebook</p>             
 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+
+<NavLink to='/'
+style={{
+  textDecoration: 'none',
+}}
+>         
+<Button
+  onClick={handleCloseNavMenu}
+  sx={{ my: 2, color: 'white', display: 'block' }}>
+  HOME
+  </Button>
+  </NavLink>
+  
 {isLoggedIn && (<NavContacts/>)}
 {!isLoggedIn && (<AuthNav/>)} 
 {isLoggedIn && (<UserMenu/>)}

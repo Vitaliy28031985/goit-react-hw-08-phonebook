@@ -13,18 +13,6 @@ export const NavContacts = () => {
 
    return (
 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-<NavLink to='/goit-react-hw-08-phonebook'
-style={{
-  textDecoration: 'none',
-}}
->         
-<Button
-  onClick={handleCloseNavMenu}
-  sx={{ my: 2, color: 'white', display: 'block' }}>
-  HOME
-  </Button>
-  </NavLink>
-
   <NavLink to='/contacts'
   style={{
     textDecoration: 'none',

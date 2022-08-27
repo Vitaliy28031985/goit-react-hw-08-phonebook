@@ -28,7 +28,7 @@ export const App = () => {
     <ContactsAppBar/>
     <Suspense fallback={<p>Loader...</p>}>
     <Routes>
-    <Route  path="/goit-react-hw-08-phonebook" element={
+    <Route  path="/" element={
     <PublicRouter>
     <Home/>
     </PublicRouter>}/>
