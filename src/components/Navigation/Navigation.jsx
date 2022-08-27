@@ -17,11 +17,7 @@ import { selectIsLoggedIn } from '../../redux/authSlice';
 
 
 const ContactsAppBar = () => {
-  const [setAnchorElNav] = React.useState(null);
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  
 
 const isLoggedIn = useSelector(selectIsLoggedIn);
 
@@ -50,12 +46,11 @@ style={{
 }}
 >         
 <Button
-  onClick={handleCloseNavMenu}
   sx={{ my: 2, color: 'white', display: 'block' }}>
   HOME
   </Button>
   </NavLink>
-  
+
 {isLoggedIn && (<NavContacts/>)}
 {!isLoggedIn && (<AuthNav/>)} 
 {isLoggedIn && (<UserMenu/>)}

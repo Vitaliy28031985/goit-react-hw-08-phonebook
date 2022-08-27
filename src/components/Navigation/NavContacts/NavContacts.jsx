@@ -5,12 +5,7 @@ import Button from '@mui/material/Button';
 
 
 export const NavContacts = () => {
-   const [setAnchorElNav] = React.useState(null);
-
-     const handleCloseNavMenu = () => {
-       setAnchorElNav(null);
-     };
-
+   
    return (
 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
   <NavLink to='/contacts'
@@ -19,7 +14,6 @@ export const NavContacts = () => {
   }}
   >   
 <Button
-  onClick={handleCloseNavMenu}
   sx={{ my: 2, color: 'white', display: 'block' }}>
   CONTACTS
   </Button> 
