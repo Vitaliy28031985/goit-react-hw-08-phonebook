@@ -62,7 +62,7 @@ setPassword('');
 <div
 style={{
   marginTop: 150,
-  marginLeft: 500,
+  marginLeft: 600,
   width: 900,
  }}>
    <form onSubmit={hendleSubmit}>

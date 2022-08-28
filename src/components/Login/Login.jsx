@@ -52,7 +52,7 @@ export default function Login() {
     <div
 style={{
   marginTop: 150,
-  marginLeft: 500,
+  marginLeft: 600,
   width: 900,
  }}>
    <form onSubmit={handleSubmit}>
