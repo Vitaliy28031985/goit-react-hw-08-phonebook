@@ -62,10 +62,12 @@ setPassword('');
 <div
 style={{
   marginTop: 150,
-  marginLeft: 600,
+  marginLeft: 400,
+ 
   width: 900,
  }}>
-   <form onSubmit={hendleSubmit}>
+   <form 
+   onSubmit={hendleSubmit}>
     <Box
       sx={{
         
